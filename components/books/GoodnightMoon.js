@@ -18,10 +18,6 @@ import {
 
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 
-import RNFetchBlob from 'rn-fetch-blob';
-
-const player = new AudioPlayer();
-
 const GoodNightMoon = () => {
 	const [pageIdx, setPageIdx] = useState(0);
 	const baseAudioPath = `/audio/goodnightMoon`;
@@ -96,18 +92,18 @@ const GoodNightMoon = () => {
 
 	const pageObj = pages[pageIdx];
 	console.log('pageObj.audio', pageObj.audio)
-	player.setAudioTrack(pageObj.audio)
-	player.playSound();
+	AudioPlayer.setAudioTrack(pageObj.audio)
+	AudioPlayer.playSound();
 
 	const prevPage = () => {
-		player.pause()
-		player.release()
+		AudioPlayer.pause()
+		AudioPlayer.release()
 		setPageIdx(pageIdx - 1);
 	}
 
 	const nextPage = () => {
-		player.pause()
-		player.release()
+		AudioPlayer.pause()
+		AudioPlayer.release()
 		console.log('next page');
 		if (pageIdx === pages.length - 1) {
 			setPageIdx(0)

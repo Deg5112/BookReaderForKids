@@ -33,8 +33,6 @@ import Navigator from './navigator/MainNavigator'
 import RNFetchBlob from 'rn-fetch-blob';
 const { fs } = RNFetchBlob;
 
-const player = new AudioPlayer();
-
 const App: () => React$Node = () => {
   return (
         <View style={styles.container}>
@@ -45,11 +43,11 @@ const App: () => React$Node = () => {
 
 const styles = StyleSheet.create({
   scrollView: {
-    backgroundColor: Colors.lighter,
+	  backgroundColor: '#2E644E'
   },
   container: {
 		flex: 1,
-	  borderColor: 'blue',
+	  backgroundColor: '#2E644E'
   },
 	topImageContainer: {
   	flex: .8,

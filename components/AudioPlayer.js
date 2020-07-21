@@ -4,15 +4,15 @@ var Sound = require('react-native-sound');
 // Enable playback in silence mode
 Sound.setCategory('Playback');
 
+let player = null;
+
 class SoundPlayer {
 	player = null;
 	soundFilePath = null;
 
-	constructor(soundFilePath) {
-			this.soundFilePath = soundFilePath;
-	}
-
 	playSound() {
+		this.release();
+
 		this.player = new Sound(this.soundFilePath, Sound.MAIN_BUNDLE, (error) => {
 			if (error) {
 				console.log('failed to load the sound', error);
@@ -73,7 +73,9 @@ class SoundPlayer {
 
 	release() {
 		// Release the audio player resource
-		this.player.release();
+		if (this.player) {
+			this.player.release();
+		}
 	}
 
 	log() {
@@ -84,4 +86,4 @@ class SoundPlayer {
 	}
 }
 
-export default SoundPlayer;
+export default new SoundPlayer();
